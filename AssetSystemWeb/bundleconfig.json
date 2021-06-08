@@ -1,0 +1,26 @@
+[
+  {
+    "outputFileName": "Content/Site.min.css",
+    "inputFiles": [
+      "Content/Site.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CustomScripts/AccountListChildDetailJs.min.js",
+    "inputFiles": [
+      "Scripts/CustomScripts/AccountListChildDetailJs.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/CustomScripts/bundle.js",
+    "inputFiles": [
+      "Scripts/CustomScripts/AccountListChildDetailJs.js",
+      "Scripts/CustomScripts/AssetDetailRows.js",
+      "Scripts/CustomScripts/AssetScripts.js",
+      "Scripts/CustomScripts/ConsignmentAssetDetailRow.js",
+      "Scripts/CustomScripts/ConsignmentScripts.js",
+      "Scripts/CustomScripts/UpgradeAssetDetailRow.js",
+      "Scripts/CustomScripts/UserProfile.js"
+    ]
+  }
+]

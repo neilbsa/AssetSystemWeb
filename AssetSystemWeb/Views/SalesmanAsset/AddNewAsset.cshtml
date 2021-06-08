@@ -1,0 +1,352 @@
+﻿@model SystemEntities.Models.AssetHeaderDetails
+
+<hr />
+<div class="page-header">
+    <h2 class="text-center">Create Assets</h2>
+</div>
+
+@using (Html.BeginForm("AddNewAsset", "Asset", FormMethod.Post, new { name = "newAssetForm", Id = "addNewAssetFrm", @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    <div class="modal alert" id="AssetSaveModal" tabindex="-1" role="dialog" aria-labelledby="myModal-label">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModal-label">Data Error</h4>
+                </div>
+                <div class="modal-body">
+                    @Html.ValidationSummary("", new { @class = "text-danger" })
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="row rowWithMargin">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Asset Details</div>
+                    <div class="panel-body">
+                        <div class="row">
+
+
+
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.LabelFor(m => m.Vendor, new { style = "padding-top: 9px;" })
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.Vendor, new { Id = "VendorDescriptionLookUp", @class = "form-control inputDescription", placeholder = "Input Vendor/Manufacturer", maxlength = 30 })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.LabelFor(m => m.Description, new { style = "padding-top: 9px;" })
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.Description, new { Id = "AssetDescriptionLookUp", @class = "form-control inputDescription", placeholder = "Input asset descriptions", maxlength = 30 })
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        @Html.Label("Expected Life Span (YEARS):")
+                                    </div>
+                                    <div class="col-xs-4">
+                                        @Html.TextBoxFor(m => m.LifeSpanYear, new { Id = "AssetDescriptionLookUp", @class = "form-control inputYears" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Branch")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DropDownListFor(m => m.BranchId, ViewBag.Branches as SelectList, new { @class = "form-control" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Warranty (Yrs)")
+                                    </div>
+                                    <div class="col-xs-3">
+                                        @Html.TextBoxFor(m => m.WarrantyYears, new { Id = "AssetDescriptionLookUp", @class = "form-control inputYears" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Remarks", new { style = "padding-top: 9px;" })
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextAreaFor(m => m.AssetRemarks, new { @class = "form-control inputRemarks", placeholder = "Input Remarks", style = "resize:none;" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rowWithMargin">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Supplier Details</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.HiddenFor(m => m.InvoiceDetails.SupplierDetails.Id)
+                                        @Html.Label("Name")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.InvoiceDetails.SupplierDetails.Name, new { Id = "SupplierNameLookUp", @class = "form-control inputCompanyName", placeholder = "Input Name" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Address")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.InvoiceDetails.SupplierDetails.Address, new { @class = "form-control inputAddress", placeholder = "Input Address", maxlength = "100" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Contact #")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.InvoiceDetails.SupplierDetails.ContactNumber, new { @class = "form-control inputContactNumber", placeholder = "Input Contact #", maxlength = 30 })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Email-Address")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.InvoiceDetails.SupplierDetails.EmailAdd, new { @class = "form-control inputEmailAddress", placeholder = "civicinc@civicmdsg.com.ph" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                    </div>
+                                    <div class="col-xs-9">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+
+                                    </div>
+                                    <div class="col-xs-9">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rowWithMargin">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Invoice Detail</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Invoice Details")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.InvoiceDetails.InvoiceNumber, new { @class = "form-control inputReferenceNumber", placeholder = "Invoice Details" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+
+                                        @Html.Label("Amount")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.Price, new { @class = "form-control inputAmount", placeholder = "Input total Amount", maxlength = 12 })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Invoice Date", new { style = "padding-top: 9px;" })
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.InvoiceDetails.InvoiceDate, new { @class = "form-control", type = "Date", max = "" + DateTime.Now.ToString("yyyy-MM-dd") + "" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row rowWithMargin">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Other Details</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("PO Number:")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.PuchaseOrderNumber, new { @class = "form-control inputReferenceNumber", placeholder = "PO Number" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+
+                                        @Html.Label("Control Number:")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextBoxFor(m => m.ControlNumber, new { @class = "form-control inputReferenceNumber", placeholder = "Control Number"})
+                                    </div>
+                                </div>
+                            </div>
+                          
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="row rowWithMargin">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Asset Details</div>
+                    <div class="panel-body" id="assetTablePanel">
+
+
+
+
+                        <table class="table" id="assetDetails">
+                            <thead>
+                                <tr>
+                                    <th>Item Type</th>
+                                    <th>Item Description</th>
+                                    <th>Part\Model Number</th>
+                                    <th>Item Serial Number</th>
+                                    <th>Item Key Detail</th>
+                                    <th>Item Remarks</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model.AssetItemDetails != null)
+                        {
+                            foreach (var item in Model.AssetItemDetails)
+                            {
+                                @Html.Partial("AssetItemDetailsRows", item)
+                    }
+                }
+
+                            </tbody>
+                        </table>
+                        <button type="button" class="btn btn-primary btn-xs" id="addNewAssetDetails">Add New</button>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-4 col-lg-4">
+                        <div class="row">
+                            <div class="col-xs-3">
+
+
+                            </div>
+                            <div class="col-xs-9">
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-lg-4">
+                        <div class="row">
+                            <div class="col-xs-3">
+
+                            </div>
+                            <div class="col-xs-9">
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Actions</div>
+                    <div class="panel-body ">
+                        <div class="pull-right">
+                            <button type="button" id="btnCreateNewAsset" class="btn btn-success">Save</button>
+                            @Html.ActionLink("Cancel", "Index", null, new { @class = "btn btn-danger" })
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+@*<script src="@Url.Content("~/Scripts/jquery-3.1.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/CustomScripts/AssetScripts.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/CustomScripts/AssetDetailRows.js")" type="text/javascript"></script>*@
+
+@Scripts.Render("~/bundles/AddNewAssetDetail")
+

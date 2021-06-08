@@ -1,0 +1,361 @@
+﻿@model SystemEntities.Models.AssetHeaderDetails
+
+
+
+
+<div class="modal fade" id="UpdateAssetModal" tabindex="-1" role="dialog" aria-labelledby="UpdateAssetModal-label">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="UpdateAssetModal-label">Update Asset Status</h4>
+            </div>
+            <div class="modal-body" id="updateAssetModelBodyContent">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="updateStatusBtn" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-lg-12 ">
+        <div class="row rowWithMargin">
+            <div class="panel panel-default">
+                <div class="panel-heading">Asset Details</div>
+                <div class="panel-body">
+
+                    <div class="row">
+                        <div class="col-md-4 col-xs-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    @Html.Label("Asset Number:")
+                                </div>
+                                <div class="col-xs-8 col-md-8 col-lg-8">
+                                    @Html.DisplayFor(m => m.AssetNumber, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-md-4 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-2 divNoPaddingRight">
+                                    @Html.Label("Vendor:")
+                                </div>
+                                <div class="col-xs-10 divNoPaddingLeft">
+                                    @Html.DisplayFor(m => m.Vendor, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    @Html.LabelFor(m => m.Description)
+
+                                </div>
+                                <div class="col-xs-6">
+                                    @Html.DisplayFor(m => m.Description, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-xs-3" style="padding:0px">
+                                    @Html.Label("Remarks:")
+                                </div>
+                                <div class="col-xs-9" style="word-wrap:break-word;">
+                                    @Html.DisplayFor(m => m.AssetRemarks, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-xs-5 divNoPaddingRight">
+                                    @Html.Label("Current Value:")
+                                </div>
+                                <div class="col-xs-7 divNoPaddingLeft">
+                                    @Html.DisplayFor(m => m.DepreciatedValue, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="row">
+                                <div class="col-xs-5 divNoPaddingRight">
+                                    @Html.Label("Warranty Months:")
+                                </div>
+                                <div class="col-xs-7 divNoPaddingLeft">
+                                    @Html.DisplayFor(m => m.WarrantyMonths, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row rowWithMargin">
+            <div class="panel panel-default">
+                <div class="panel-heading">Supplier Details</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    @Html.HiddenFor(m => m.InvoiceDetails.SupplierDetails.Id)
+                                    @Html.Label("Name:")
+                                </div>
+                                <div class="col-xs-9">
+                                    @Html.DisplayFor(m => m.InvoiceDetails.SupplierDetails.Name, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    @Html.Label("Address:")
+                                </div>
+                                <div class="col-xs-9">
+                                    @Html.DisplayFor(m => m.InvoiceDetails.SupplierDetails.Address, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    @Html.Label("Contact #:")
+                                </div>
+                                <div class="col-xs-8">
+                                    @Html.DisplayFor(m => m.InvoiceDetails.SupplierDetails.ContactNumber, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    @Html.Label("Email-Address:")
+                                </div>
+                                <div class="col-xs-7">
+                                    @Html.DisplayFor(m => m.InvoiceDetails.SupplierDetails.EmailAdd, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                </div>
+                                <div class="col-xs-9">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-3">
+
+                                </div>
+                                <div class="col-xs-9">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row rowWithMargin">
+            <div class="panel panel-default">
+                <div class="panel-heading">Invoice Detail</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    @Html.Label("Invoice Details:")
+                                </div>
+                                <div class="col-xs-7">
+                                    @Html.DisplayFor(m => m.InvoiceDetails.InvoiceNumber, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-3">
+
+                                    @Html.Label("Amount:")
+                                </div>
+                                <div class="col-xs-9">
+                                    @Html.DisplayFor(m => m.Price, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-5">
+                                    @Html.Label("Purchase Date")
+                                </div>
+                                <div class="col-xs-7">
+
+                                    @Html.DisplayFor(x => x.PurchaseDate)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row rowWithMargin">
+            <div class="panel panel-default">
+                <div class="panel-heading">Other Details</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    @Html.Label("PO Number:")
+                                </div>
+                                <div class="col-xs-9">
+                                    @Html.DisplayFor(m => m.PuchaseOrderNumber, new { @class = "form-control inputReferenceNumber", placeholder = "PO Number" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-lg-4">
+                            <div class="row">
+                                <div class="col-xs-3">
+
+                                    @Html.Label("Control Number:")
+                                </div>
+                                <div class="col-xs-9">
+                                    @Html.DisplayFor(m => m.ControlNumber, new { @class = "form-control inputReferenceNumber", placeholder = "Control Number" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="row rowWithMargin">
+            <div class="panel panel-default">
+                <div class="panel-heading">Supporting Files</div>
+                <div class="panel-body">
+                    <table class="table table-bordered table-hover" id="documentTable">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Document Type
+                                </th>
+                                <th>
+                                    File
+                                </th>
+                                <th>
+                                    Action
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.assetHeaderFiles != null)
+                            {
+                                foreach (var item in Model.assetHeaderFiles.Where(x=>x.IsDeleted ==false))
+                                {
+                                    @Html.Partial("documentreadonly", item)
+                                }
+                            }
+
+                        </tbody>
+                    </table>                 
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Actions</div>
+            <div class="panel-body">
+                @Html.ActionLink("Print Report", "CreateAssetReport", new { Id = Model.Id }, new { @class = "btn btn-success" })
+                @Html.ActionLink("Update Asset", "UpgradeAsset", new { Id = Model.Id }, new { @class = "btn btn-success" })
+            </div>
+        </div>
+
+        <div class="row rowWithMargin">
+            <div class="panel panel-default">
+                <div class="panel-heading">Asset Details</div>
+                <div class="panel-body">
+                    <table class="table" id="assetDetails">
+                        <thead>
+                            <tr>
+                                <th> Id</th>
+                                <th> Description</th>
+                                <th>Part Number</th>
+                                <th> Serial Number</th>
+                                <th> Key Detail</th>
+                                <th>Ctrl#</th>
+                                <th> Remarks</th>
+                                <th>Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model.AssetItemDetails != null)
+                            {
+                                foreach (var item in Model.AssetItemDetails)
+                                {
+                                    @Html.Partial("AssetModelReadOnlyRows", item)
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-4 col-lg-4">
+                    <div class="row">
+                        <div class="col-xs-3">
+
+
+                        </div>
+                        <div class="col-xs-9">
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <div class="row">
+                        <div class="col-xs-3">
+
+                        </div>
+                        <div class="col-xs-9">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<script src="@Url.Content("~/Scripts/jquery-3.1.1.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/CustomScripts/AssetScripts.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/CustomScripts/AssetDetailRows.js")" type="text/javascript"></script>*@
+
+@Scripts.Render("~/bundles/AddNewAssetDetail")

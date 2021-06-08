@@ -1,0 +1,35 @@
+﻿@model SystemEntities.Models.AssetHeaderDetails
+
+
+
+
+<tr>
+
+    @if (Model.Consignment == null && !"Transfered".Equals(Model.Status))
+    {
+        <td>Not Consigned Yet</td>
+        <td>Not Consigned Yet</td>
+        <td>Not Consigned Yet</td>
+        <td>Not Consigned Yet</td>
+        <td>@Html.ActionLink("Details", "Details", new { Id = Model.Id })</td>
+    }
+    else
+    {
+        if ("Transfered".Equals(Model.Status))
+        {
+                    <td>Transfered</td>
+                    <td>Transfered</td>
+                    <td>Transfered</td>
+                    <td>@Html.DisplayFor(m => m.AssetRemarks, new { @class = "form-control" })</td>
+                    <td>@Html.ActionLink("Details", "Details", new { Id = Model.Id })</td>
+        }
+        else
+        {
+            <td>@Html.DisplayFor(m => m.Consignment.ConsignmentNumber, new { @class = "form-control" })</td>
+            <td>@Html.DisplayFor(m => m.Consignment.CurrentUser.Firstname, new { @class = "form-control" })</td>
+            <td>@Html.DisplayFor(m => m.Consignment.CreatedDate, new { @class = "form-control" })</td>
+            <td>@Html.DisplayFor(m => m.Consignment.Remarks, new { @class = "form-control" })</td>
+            <td>@Html.ActionLink("Details", "Details", new { Id = Model.Id })</td>
+        }
+    }
+</tr>

@@ -1,0 +1,23 @@
+﻿@model SystemEntities.Models.AssetHeaderFiles
+@{
+
+    Layout = null;
+ }
+<tr>
+    @using (Html.BeginCollectionItem("assetHeaderFiles"))
+    {
+    <th>
+        @Html.DisplayFor(m => m.DocumentType, new { @class = "form-control" })
+    </th>
+    <th>
+        @Html.DisplayFor(m => m.FileName, new { @class = "form-control" })
+      
+     
+    </th>
+    <th>
+        @Html.ActionLink("Download", "DownloadFile", new { ent = Model.Id }, new { @class = "btn btn-info" })
+
+        <button class="btn btn-success viewDocument" data-documentid="@Model.Id">View</button>
+    </th>
+    }
+</tr>

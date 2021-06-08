@@ -1,0 +1,22 @@
+﻿@model IEnumerable<SystemEntities.Models.AssetHeaderDetails>
+
+<table class="table">
+    <thead>
+        <tr>
+        <th>Consignment Number</th>
+        <th>User</th>
+        <th>Date</th>
+        <th>Remarks</th>
+        <th>View Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                @Html.Partial("AssetConsignmentDetailReadOnlyView", item)
+            }
+        }
+    </tbody>
+</table>

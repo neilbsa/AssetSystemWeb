@@ -1,0 +1,28 @@
+﻿@model IEnumerable<SystemEntities.Models.UserProfile>
+<table class="table table-hover" id="userLookupTbl">
+    <thead>
+        <tr>
+            <th>
+                Company Id #
+            </th>
+            <th>
+                Fullname
+            </th>
+         
+        </tr>
+    </thead>
+    <tbody>
+            @foreach (var user in Model)
+            {
+                <tr id="@user.CompEmployeeNum">
+                    <td>
+                        <div class="userIdSelect">@user.CompEmployeeNum</div>
+                    </td>
+                    <td>
+                        @user.Fullname
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+

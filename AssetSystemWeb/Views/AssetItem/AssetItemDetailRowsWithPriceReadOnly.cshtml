@@ -1,0 +1,72 @@
+﻿
+@model SystemEntities.Models.AssetItemDetail
+
+
+<tr>
+  
+        <td>
+
+            <div class="col-sm-12 form-group has-error has-feedback" style="margin-top:10px;">
+                @Html.DisplayFor(m => m.ItemId)
+            </div>
+
+        </td>
+        @*<td>@Html.TextBoxFor(m => m.ItemDescription, new { Id = "ItemDescription", @class = "form-control ItemDetailDescription" })</td>*@
+
+        <td>
+
+            <div class="col-sm-12 form-group  has-feedback" style="margin-top:10px;">
+                @Html.DisplayFor(m => m.ItemDescription, new { Id = "ItemDescription", @class = "form-control ItemDetailDescription" })
+            </div>
+        </td>
+    <td>
+
+        <div class="col-sm-12 form-group  has-feedback" style="margin-top:10px;">
+            @Html.DisplayFor(m => m.PartNumber, new { Id = "ItemDescription", @class = "form-control ItemDetailDescription" })
+        </div>
+    </td>
+
+            <td>
+
+                <div class="col-sm-12 form-group has-feedback errorBorder" style="margin-top:10px;">
+                    @Html.DisplayFor(m => m.SerialNumber, new { @class = "form-control ItemSerialDetail" })
+                    @*<span  style="visibility:hidden;" class="glyphicon errorIcon glyphicon-warning-sign form-control-feedback"></span>*@
+                    <span class="glyphicon errorIcon form-control-feedback"></span>
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group errorBorder has-feedback" style="margin-top:10px;">
+                    @Html.DisplayFor(m => m.ItemKeyDetail, new { @class = "form-control ItemKeyDetail" })
+                    @*<span style="visibility:hidden;" class="glyphicon errorIcon glyphicon-warning-sign form-control-feedback"></span>*@
+                    <span class="glyphicon errorIcon form-control-feedback"></span>
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.DisplayFor(m => m.ItemRemarks, new { @class = "form-control" })
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.DisplayFor(m => m.AssetHeaderDetail.LifeSpanYear, new { @class = "form-control" })
+                </div>
+            </td>
+    <td>
+        <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+            @Html.DisplayFor(m => m.AssetHeaderDetail.WarrantyYears, new { @class = "form-control" })
+        </div>
+    </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.DisplayFor(m => m.AssetHeaderDetail.Price, new { @class = "form-control" })
+                </div>
+            </td>
+      
+    
+</tr>
+
+
+
+
+
+

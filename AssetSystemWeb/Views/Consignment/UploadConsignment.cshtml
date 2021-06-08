@@ -1,0 +1,25 @@
+﻿@model SystemEntities.ViewModels.ConsignmentUploadModel
+
+
+@{
+    Layout = null;
+}
+@using (Html.BeginForm("UploadConsignment", "Consignment", FormMethod.Post, new { @class = "form-horizontal", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x=>x.Consignment.Id)
+
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+            <label class="btn btn-default btn-file">
+                Browse File @Html.TextBoxFor(m => m.File, new { Id = "consFileUpload", type = "file", style = "display: none;" })
+            </label>
+            <span class="fileName"></span>
+
+        </div>
+    
+    </div>
+}
+

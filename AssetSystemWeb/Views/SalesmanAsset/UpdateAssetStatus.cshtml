@@ -1,0 +1,44 @@
+﻿@model SystemEntities.Models.AssetHeaderDetails
+
+
+
+@using (Html.BeginForm("UpdateAssetStatus","Asset",FormMethod.Post,new { @Id = "updateStatusForm" }))
+{
+    <div class="row">
+        @Html.HiddenFor(m => m.Id)
+        <div class="col-md-5  col-xs-5">
+            @Html.Label("Asset Number:")
+        </div>
+        <div class="col-md-7  col-xs-7">
+            @Html.DisplayFor(m => m.AssetNumber)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5  col-xs-5">
+            @Html.Label("Asset Description:")
+        </div>
+        <div class="col-md-7  col-xs-7">
+            @Html.DisplayFor(m => m.Description)
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5  col-xs-5">
+            @Html.Label("Current Status:")
+        </div>
+        <div class="col-md-7  col-xs-7">
+            @Html.DisplayFor(m => m.Status)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5  col-xs-5">
+            @Html.Label("Set Status:")
+        </div>
+        <div class="col-md-7  col-xs-7">
+            @Html.DropDownListFor(m => m.Status, ViewBag.Status as SelectList, new { @class = "StatusSelection" })
+        </div>
+    </div>
+
+
+}
+

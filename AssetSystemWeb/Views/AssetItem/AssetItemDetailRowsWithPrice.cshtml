@@ -1,0 +1,225 @@
+﻿@model SystemEntities.Models.AssetItemDetail
+
+<tr>
+    @using (Html.BeginCollectionItem("AssetItemDetails"))
+    {
+
+       
+
+        <td>
+
+
+
+
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    &nbsp;
+                    <button type="button" class="close btnDelete">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Type: ")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                @Html.DropDownListFor(m => m.ItemType, ViewBag.ItemTypes as SelectList, new { @class = "ItemTypeSelect" })
+                         
+                            </div>                        
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Vendor: ")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                @Html.TextBoxFor(m => m.AssetHeaderDetail.Vendor, new {  @class = "form-control inputDescription AssetItemVendor"})
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Description: ")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="has-feedback">
+                                    @Html.TextBoxFor(m => m.ItemDescription, new { Id = "ItemDescription", @class = "form-control inputDescription AssetItemDescription" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Part Number: ")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="has-feedback" >
+                                    @Html.TextBoxFor(m => m.PartNumber, new { @class = "form-control inputDescription AssetItemPartNumber" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Serial #: ")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="has-feedback errorBorder" >
+                                    @Html.TextBoxFor(m => m.SerialNumber, new { @class = "form-control inputSerialnumber ItemSerialDetail" })
+                                    <span class="glyphicon errorIcon form-control-feedback"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Key #: ")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="errorBorder has-feedback">
+                                    @Html.TextBoxFor(m => m.ItemKeyDetail, new { @class = "form-control inputKeydetail ItemKeyDetail"})
+                                    <span class="glyphicon errorIcon form-control-feedback"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+
+
+
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("LSpan(Yrs):")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="col-sm-12 form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.AssetHeaderDetail.LifeSpanYear, new { @class = "form-control inputYears" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Warr(Yrs):")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="col-sm-12 form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.AssetHeaderDetail.WarrantyYears, new { @class = "form-control inputYears" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Price : ")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="col-sm-12 form-group has-feedback">
+                                    @Html.TextBoxFor(m => m.AssetHeaderDetail.Price, new { @class = "form-control inputAmount" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Branch")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="col-sm-12 form-group has-feedback">
+                                    @Html.DropDownListFor(m => m.AssetHeaderDetail.BranchId, ViewBag.Branches as SelectList, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <div class="col-sm-2 col-xs-2">
+                                @Html.Label("Remarks: ")
+                            </div>
+                            <div class="col-sm-6 col-xs-6">
+                                <div class="has-feedback">
+                                    @Html.TextBoxFor(m => m.ItemRemarks, new { @class = "form-control inputRemarks" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </td>
+
+
+
+
+       
+                @*
+
+
+                 <td>
+
+            <div class="col-sm-12 form-group has-error has-feedback" style="margin-top:10px;">
+                @Html.DropDownListFor(m => m.ItemType, ViewBag.ItemTypes as SelectList, new { @class = "ItemTypeSelect" })
+            </div>
+        </td>
+                <td>
+
+                <div class="col-sm-12 form-group  has-feedback" style="margin-top:10px;">
+                    @Html.TextBoxFor(m => m.ItemDescription, new { Id = "ItemDescription", @class = "form-control inputDescription ItemDetailDescription", maxlength = "20" })
+                </div>
+            </td>
+
+
+            <td>
+
+                    <div class="col-sm-12 form-group has-feedback errorBorder" style="margin-top:10px;">
+                        @Html.TextBoxFor(m => m.SerialNumber, new { @class = "form-control inputSerialnumber ItemSerialDetail", maxlength = "20" })
+                       <span class="glyphicon errorIcon form-control-feedback"></span>
+                    </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group errorBorder has-feedback" style="margin-top:10px;">
+                    @Html.TextBoxFor(m => m.ItemKeyDetail, new { @class = "form-control inputKeydetail ItemKeyDetail", maxlength = "20" })
+                    <span class="glyphicon errorIcon form-control-feedback"></span>
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.TextBoxFor(m => m.ItemRemarks, new { @class = "form-control inputRemarks" })
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.TextBoxFor(m => m.LifeSpanYear, new { @class = "form-control inputYears" })
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.TextBoxFor(m => m.WarrantyYears, new { @class = "form-control inputYears" })
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.TextBoxFor(m => m.Price, new { @class = "form-control inputAmount" })
+                </div>
+            </td>
+            <td>
+                <button type="button" class="btn btn-danger btnDelete">Delete</button>
+            </td>*@
+    }
+</tr>
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+@Scripts.Render("~/bundles/AssetItemDetailRows")
+
+    
+
+
+
+

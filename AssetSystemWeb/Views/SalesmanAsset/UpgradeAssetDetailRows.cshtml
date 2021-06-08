@@ -1,0 +1,64 @@
+﻿@model SystemEntities.Models.AssetItemDetail
+
+
+<tr>
+    @using (Html.BeginCollectionItem("AssetItemDetails"))
+    {
+        @Html.HiddenFor(m => m.Id)
+        <td>
+            <div class="col-sm-12 form-group has-error has-feedback" style="margin-top:10px;">
+
+                @Html.HiddenFor(m => m.ItemId)
+                @Html.DisplayFor(m => m.ItemId)
+            </div>
+        </td>
+
+
+        <td>
+
+            <div class="col-sm-12 form-group  has-feedback" style="margin-top:10px;">
+                @Html.HiddenFor(m => m.ItemDescription)
+                @Html.DisplayFor(m => m.ItemDescription)
+            </div>
+        </td>
+        <td>
+            <div class="col-sm-12 form-group  has-feedback" style="margin-top:10px;">
+                @Html.HiddenFor(m => m.PartNumber)
+                @Html.DisplayFor(m => m.PartNumber)
+            </div>
+        </td>
+        <td>
+
+            <div class="col-sm-12 form-group has-feedback errorBorder" style="margin-top:10px;">
+                @Html.DisplayFor(m => m.SerialNumber)
+                @Html.HiddenFor(m => m.SerialNumber)
+            </div>
+        </td>
+            <td>
+                <div class="col-sm-12 form-group errorBorder has-feedback" style="margin-top:10px;">
+                    @Html.HiddenFor(m => m.ItemKeyDetail)
+                    @Html.DisplayFor(m => m.ItemKeyDetail)
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.DisplayFor(m => m.ItemRemarks)
+                    @Html.HiddenFor(m => m.ItemRemarks)
+                </div>
+            </td>
+            <td>
+
+                @if ("Superseded".Equals(Model.Status))
+                {
+                    @Html.DisplayFor(m => m.Status)
+                    @Html.HiddenFor(m => m.Status)
+                }
+                else
+                {
+                    @Html.DropDownListFor(m => m.Status, new SelectList(ViewBag.Statuses, "Name", "Name", Model.Status), new { @class = "ItemStatusSelect" })
+                }
+           </td>
+    }
+</tr>
+
+

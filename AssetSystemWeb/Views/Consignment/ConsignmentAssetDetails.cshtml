@@ -1,0 +1,11 @@
+﻿@model List<SystemEntities.Models.AssetItemDetail>
+
+
+
+@foreach(var item in Model.ToList())
+{
+    @Html.Partial("ConsignmentAssetItem",item)
+}
+
+
+@Scripts.Render("~/bundles/ConsigmentBundle")

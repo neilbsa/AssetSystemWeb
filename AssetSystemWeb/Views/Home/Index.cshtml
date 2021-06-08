@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h2> Dashboard </h2>
+    </div>
+</div>
+<hr/>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="panel panel-green">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class=" col-lg-9">
+                        <i class="glyphicon glyphicon-circle-arrow-up fa-5x">
+
+                        </i>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="huge" id="onUsedCount"></div>
+                        <div>On Used</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+    
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class=" col-lg-9">
+                        <i class="glyphicon glyphicon-circle-arrow-up fa-5x">
+
+                        </i>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="huge" id="availableCount"></div>
+                        <div>Available</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-lg-4">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                <div class="row">
+                    <div class=" col-lg-9">
+                        <i class="glyphicon glyphicon-exclamation-sign fa-5x">
+
+                        </i>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="huge" id="defectiveCount"></div>
+                        <div>Defective</div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body">
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">
+    <div style="padding:10px" class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <i class="fa fa-bar-chart-o fa-fw"></i> Status Chart
+            </div>
+            <div class="panel-body">
+                <div id="statusDataDonutChart"></div>
+           
+            </div>
+            <!-- /.panel-body -->
+        </div>
+    </div>
+    <div style="padding:10px;" class="col-lg-6">
+        <div class="panel panel-default">
+            <div class="panel-heading">Detail</div>
+            <div class="panel-body">
+               <table id="statusDetailRow" class="table table-responsive">
+                   <thead>
+                       <tr>
+                           <th>
+                              Asset Number
+                           </th>
+                           <th>
+                               Item Description
+                           </th>
+                           <th>
+                               Item Description
+                           </th>
+                       </tr>
+                   </thead>
+                   <tbody>
+
+                   </tbody>
+               </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.1.1.min.js"></script>
+<script src="~/ThemeCode/metisMenu/metisMenu.min.js"></script>
+<script src="~/ThemeCode/raphael/raphael.min.js"></script>
+<script src="~/ThemeCode/morrisjs/morris.min.js"></script>
+<script src="~/ThemeCode/Datatable/js/js/jquery.dataTables.min.js"></script>
+<script src="~/ThemeCode/Datatable/js/js/dataTables.bootstrap.min.js"></script>
+<script src="~/ThemeCode/Datatable/datatable-responsive/dataTables.responsive.js"></script>
+<script src="~/Scripts/CustomScripts/HomePageData.js"></script>

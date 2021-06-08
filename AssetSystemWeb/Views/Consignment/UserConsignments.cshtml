@@ -1,0 +1,50 @@
+﻿@model IEnumerable<SystemEntities.Models.Consignment>
+
+<hr />
+<hr />
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.Label("Consignment Number")
+        </th>
+      
+        <th>
+            @Html.Label("DateConsigned")
+        </th>
+        <th>
+            @Html.Label("ConsignedBy")
+        </th>
+        <th>
+            @Html.Label("Remarks")
+        </th>
+        <th>
+
+        </th>
+
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsignmentNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                <div style="word-wrap:break-word;">
+                    @Html.DisplayFor(m => item.Remarks, new { @class = "form-control" })
+                </div>
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { Id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

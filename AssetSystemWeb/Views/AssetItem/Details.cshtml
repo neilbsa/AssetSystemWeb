@@ -1,0 +1,212 @@
+﻿
+
+@model SystemEntities.Models.AssetItemDetail
+
+
+
+
+    <div class="row">
+        <div class="col-lg-12 ">
+            <div class="row rowWithMargin">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Item Details</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @*@Html.HiddenFor(m => m.InvoiceDetails.SupplierDetails.Id)*@
+                                        @Html.Label("Asset:")
+                                    </div>
+                                    <div class="col-xs-9">
+                                      @Html.ActionLink(Model.AssetHeaderDetail.AssetNumber,"Details","Asset", new { @Id = Model.AssetHeaderId }, null)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @*@Html.HiddenFor(m => m.InvoiceDetails.SupplierDetails.Id)*@
+                                        @Html.Label("Item Id")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.ItemId, new { Id = "SupplierNameLookUp", @class = "form-control", placeholder = "Input Name", maxlength = "50" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Description")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.ItemDescription, new { @class = "form-control", placeholder = "Input Address", maxlength = "100" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Item Serial")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.SerialNumber, new { @class = "form-control", placeholder = "Input Contact #", maxlength = "50" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Key Detail")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.ItemKeyDetail, new { @class = "form-control", placeholder = "civicinc@civicmdsg.com.ph", maxlength = "50" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                    </div>
+                                    <div class="col-xs-9">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Remarks")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.TextAreaFor(m => m.ItemRemarks, new { @class = "form-control", placeholder = "civicinc@civicmdsg.com.ph" , @readonly = "readonly" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row rowWithMargin">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Supplier Details</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @*@Html.HiddenFor(m => m.InvoiceDetails.SupplierDetails.Id)*@
+                                        @Html.Label("Name")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.AssetHeaderDetail.InvoiceDetails.SupplierDetails.Name, new { Id = "SupplierNameLookUp", @class = "form-control", placeholder = "Input Name", maxlength = "50" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Address")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.AssetHeaderDetail.InvoiceDetails.SupplierDetails.Address, new { @class = "form-control", placeholder = "Input Address", maxlength = "100" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Contact #")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.AssetHeaderDetail.InvoiceDetails.SupplierDetails.ContactNumber, new { @class = "form-control", placeholder = "Input Contact #", maxlength = "50" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Email-Address")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.AssetHeaderDetail.InvoiceDetails.SupplierDetails.EmailAdd, new { @class = "form-control", placeholder = "civicinc@civicmdsg.com.ph", maxlength = "50" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                    </div>
+                                    <div class="col-xs-9">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+
+                                    </div>
+                                    <div class="col-xs-9">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row rowWithMargin">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Invoice Detail</div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Invoice Details")
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.AssetHeaderDetail.InvoiceDetails.InvoiceNumber, new { @class = "form-control", placeholder = "Invoice Details", maxlength = "100" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-4 col-lg-4">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        @Html.Label("Invoice Date", new { style = "padding-top: 9px;" })
+                                    </div>
+                                    <div class="col-xs-9">
+                                        @Html.DisplayFor(m => m.AssetHeaderDetail.InvoiceDetails.InvoiceDate, new { @class = "form-control", type = "Date", max = "" + DateTime.Now.ToString("yyyy-MM-dd") + "" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+<link href="@Url.Content("~/Content/themes/base/jquery-ui.min.css")" rel="stylesheet" />
+@Scripts.Render("~/bundles/AssetItemBundle")
+

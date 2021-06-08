@@ -1,0 +1,73 @@
+﻿@model IEnumerable<SystemEntities.Models.AssetHeaderDetails>
+
+
+<hr />
+<div class="page-header">
+    <h2 class="text-center">Company Assets</h2>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Actions</div>
+    <div class="panel-body">
+        @Html.ActionLink("Create New", "AddNewAsset", null, new { @class = "btn btn-success" })
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">List of Assets</div>
+    <div class="panel-body">
+        <table class="table table-hover" id="AssetTable">
+            <thead>
+                <tr>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssetNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Description)
+                    </th>
+                
+                    <th>
+                        @Html.DisplayNameFor(model => model.AssetRemarks)
+                    </th>
+
+                    <th>
+                        @Html.Label("Actions")
+                    </th>
+
+
+                </tr>
+            </thead>
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                 
+                        <tr>
+
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AssetNumber)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Description)
+                            </td>
+                           
+                            <td>
+                                @Html.DisplayFor(modelItem => item.AssetRemarks)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "Details", new { Id = item.Id })
+                            </td>
+
+                        </tr>
+                    
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@Scripts.Render("~/bundles/AssetIndex")

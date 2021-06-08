@@ -1,0 +1,24 @@
+﻿@model SystemEntities.Models.AssetHeaderFiles
+@{
+
+    Layout = null;
+ }
+<tr>
+    @using (Html.BeginCollectionItem("assetHeaderFiles"))
+    {
+
+        @Html.HiddenFor(x => x.Id)
+        <th>
+            @Html.DropDownListFor(m => m.DocumentType, new SelectList(ViewBag.DocumentTypes, "Description", "Description", Model == null ? null : Model.DocumentType), new { @class = "form-control" })
+        </th>
+        <th>
+            <label class="btn btn-default btn-file">
+                Browse File @Html.TextBoxFor(m => m.ImageModel, new { @class = "fileUpload", type = "file", style = "display: none;" })
+            </label>
+            <span class="fileName"></span>
+        </th>
+        <th>
+            <button class="btn btn-danger btnDelete" type="button">delete</button>
+        </th>
+    }
+</tr>

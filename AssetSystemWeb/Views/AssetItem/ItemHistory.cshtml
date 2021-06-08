@@ -1,0 +1,30 @@
+﻿@model IEnumerable<SystemEntities.Models.Consignment>
+
+<h3>Consignment History</h3>
+<table class="table-responsive table table-hover">
+    <thead>
+        <tr>
+            <th>
+                Consigment Id
+            </th>
+            <th>
+                User
+            </th>
+            <th>
+                Remarks
+            </th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>@item.ConsignmentNumber</td>
+            <td>@item.CurrentUser.Fullname</td>
+            <td>@item.Remarks</td>
+            <td>@Html.ActionLink("Details","Details","Consignment",new {Id = item.Id },null)</td>
+        </tr>
+        }
+    </tbody>
+</table>

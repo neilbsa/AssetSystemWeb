@@ -1,0 +1,255 @@
+﻿@model  SystemEntities.Models.Consignment
+
+@{
+    Layout = null;
+    ViewBag.Title = "Consigment Report";
+}
+
+<div class="row">
+    <div class="col-xs-4">
+        <img src="@String.Format("{0}{1}.jpg",@Server.MapPath("~/ICONS/"),Model.Company.Code)" />
+
+    </div>
+    <div class="col-xs-8">
+        <h2>Consigment Report</h2>
+        @*as of <u> @DateTime.Now</u>*@
+    </div>
+</div>
+
+
+<link href="@Server.MapPath( "~/Content/bootstrap.min.css")" rel="stylesheet" />
+<link href="@Server.MapPath("~/Content/MyStyleSheetReport.css")" rel="stylesheet" />
+
+<div class="panel panel-default">
+    <div class="panel-heading">Consignment Details</div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-xs-2">
+                @Html.Label("Consignment Number:")
+
+            </div>
+            <div class="col-xs-4">
+                @Html.DisplayFor(m => m.ConsignmentNumber, new { @class = "form-control" })
+            </div>
+
+            <div class="col-xs-2">
+                @Html.Label("Date Issued:")
+
+            </div>
+            <div class="col-xs-4">
+                @Html.DisplayFor(m => m.DateIssueDate, new { @class = "form-control" })
+            </div>
+        </div>
+        <hr />
+        <div class="row rowWithMargin">
+            <div class="row">
+                <div class="col-xs-4">
+                    <div class="col-xs-5">
+                        @Html.Label("Consignee Id:")
+                    </div>
+                    <div class="col-xs-7">
+
+                        @Html.DisplayFor(m => m.CurrentUser.CompEmployeeNum, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+
+                <div class="col-xs-4 col-xs-offset-4">
+                    <div class="col-xs-3">
+                        @Html.Label("Remarks:")
+                    </div>
+                    <div class="col-xs-9" style="word-wrap:break-word;">
+                        @Html.DisplayFor(m => m.Remarks, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-top:5px;margin-bottom:10px;" />
+
+            @if (Model.CurrentUser.UserType == "Users")
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-7">
+                            @Html.Label("Consignee Name:")
+                        </div>
+                        <div class="col-md-5">
+                            @Html.DisplayFor(m => m.CurrentUser.Fullname, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-7">
+                            @Html.Label("Department:")
+                        </div>
+                        <div class="col-md-5">
+                            @Html.DisplayFor(m => m.CurrentUser.Fullname, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+        <hr style="margin-top:5px;margin-bottom:10px;" />
+        <div class="row rowWithMargin">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="col-xs-4">
+                        @*@Html.Label("Address:")*@
+                    </div>
+                    <div class="col-xs-8">
+
+                        @*@Html.DisplayFor(m => m.CurrentUser.BranchDetails.Address, new { @class = "form-control" })*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Consigned Assets</div>
+    <div class="panel-body">
+        <table class="table" id="assetDetails">
+            <thead>
+                <tr>
+                    <th>Asset Number</th>
+                    <th>Item Id</th>
+                    <th>Item Description</th>
+                    <th>Serial</th>
+                    <th>Item Key Detail</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Assets)
+                {
+
+                    @Html.Partial("ConsignmentAssetDetailReport", item)
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div><center>
+
+    ------------------------------------------Nothing Follows--------------------------------------------
+</center>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+
+<div class="row divMarginLeft">
+    <div class="col-xs-4">
+
+        <div class="row">
+            Prepared By:
+        </div>
+        <br />
+        <div class="row">
+            <u>&nbsp; &nbsp; @Model.CreatedBy &nbsp; &nbsp;</u>
+        </div>
+    </div>
+
+
+    <div class="col-xs-4">
+        <div class="col-xs-5">
+        </div>
+        <div class="col-xs-7">
+        </div>
+    </div>
+
+
+    <div class="col-xs-4">
+        <div class="row">
+            Consignee Signature:
+        </div>
+        <br />
+        <div class="row">
+            <u>&nbsp; &nbsp; @( Model.CurrentUser.Firstname + " " + Model.CurrentUser.Middlename + " " + Model.CurrentUser.Surname ) &nbsp; &nbsp;</u>
+        </div>
+
+
+    </div>
+</div>
+<br />
+<div class="row divMarginLeft">
+    <div class="col-xs-4">
+
+        <div class="row">
+            Approved By:
+        </div>
+        <br />
+        <div class="row">
+            <u>&nbsp; &nbsp; Ian D Commandante &nbsp; &nbsp;</u>
+        </div>
+    </div>
+
+
+    <div class="col-xs-4">
+        <div class="col-xs-5">
+        </div>
+        <div class="col-xs-7">
+        </div>
+    </div>
+
+
+    <div class="col-xs-4">
+        <div class="row">
+            Guard On Duty
+        </div>
+        <br />
+        <div class="row">
+            <u>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;</u>
+        </div>
+    </div>
+</div>
+
+<br />
+@*<div class="row divMarginLeft">
+    <div class="col-xs-4">
+
+        <div class="row">
+            Noted By:
+        </div>
+        <br />
+        <div class="row">
+            <u>&nbsp; &nbsp; Violi T Lim &nbsp; &nbsp;</u>
+        </div>
+    </div>
+
+
+    <div class="col-xs-4">
+        <div class="col-xs-5">
+        </div>
+        <div class="col-xs-7">
+        </div>
+    </div>
+
+
+    <div class="col-xs-4">
+        <div class="row">
+
+        </div>
+        <br />
+        <div class="row">
+        </div>
+
+
+    </div>
+</div>*@
+
+

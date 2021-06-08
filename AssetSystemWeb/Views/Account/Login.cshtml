@@ -1,0 +1,82 @@
+﻿@using SystemEntities.Models
+@model SystemEntities.Models.LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/ThemeCode/metisMenu/metisMenu.min.css" rel="stylesheet" />
+<link href="~/ThemeCode/sb-css/sb-admin-2.css" rel="stylesheet" />
+<link href="@Url.Content("~/Content/MyStyleSheet.css")" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+            <div class="login-panel panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Please Sign In</h3>
+                </div>
+                <div class="panel-body">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new {  role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })*@
+                            <div class="col-md-12">
+                           
+                                @Html.TextBoxFor(m => m.UserName, new { @class = "form-control inputUsername", placeholder = "Username" })
+                                @Html.ValidationMessageFor(m => m.UserName, "", new { @class = "text-danger " })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                            <div class="col-md-12">
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control inputPassword", placeholder = "Password" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-1 col-md-11">
+                                <div class="checkbox">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                    @Html.LabelFor(m => m.RememberMe)
+                                </div>
+                            </div>
+                        </div>
+
+                        @if (ViewBag.LoginError != null)
+                        {
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="alert alert-danger" role="alert">
+                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span class="sr-only">Error:</span>
+                                        @ViewBag.LoginError 
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                <input type="submit" value="Log in" class="btn pull-right btn-default" />
+                            </div>
+                        </div>
+                        <!-- Change this to a button or input when using this as a form -->
+                    </fieldset>
+                }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

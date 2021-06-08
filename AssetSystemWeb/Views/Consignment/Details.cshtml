@@ -1,0 +1,118 @@
+﻿@model  SystemEntities.Models.Consignment
+
+
+
+
+<div class="panel panel-default">
+    <div class="panel-heading">Consignee Details</div>
+    <div class="panel-body">
+        <div class="row rowWithMargin">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-md-5">
+                        @Html.Label("Consignee Id:")
+                    </div>
+                    <div class="col-md-7">
+
+                        @Html.DisplayFor(m => m.CurrentUser.CompEmployeeNum, new { @class = "form-control" })
+                    </div>
+                </div>
+
+
+
+                <div class="col-md-4 col-md-offset-4">
+                    <div class="col-md-3">
+                        @Html.Label("Remarks:")
+                    </div>
+                    <div class="col-xs-9" style="word-wrap:break-word;">
+                        @Html.DisplayFor(m => m.Remarks, new { @class = "form-control" })
+                    </div>
+                </div>
+            </div>
+            <hr style="margin-top:10px;margin-bottom:10px;" />
+            <div class="row">
+                @if (Model.CurrentUser.UserType == "Users")
+                {
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            @Html.Label("Firstname:")
+                        </div>
+                        <div class="col-md-7">
+
+                            @Html.DisplayFor(m => m.CurrentUser.Firstname, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            @Html.Label("Middlename:")
+                        </div>
+                        <div class="col-md-7">
+                            @Html.DisplayFor(m => m.CurrentUser.Middlename, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            @Html.Label("Surname:")
+                        </div>
+                        <div class="col-md-7">
+                            @Html.DisplayFor(m => m.CurrentUser.Surname, new { @class = "form-control" })
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="col-md-4">
+                        <div class="col-md-5">
+                            @Html.Label("Department:")
+                        </div>
+                        <div class="col-md-7">
+                            @Html.DisplayFor(m => m.CurrentUser.Fullname, new { @class = "form-control" })
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Actions</div>
+    <div class="panel-body">
+
+        @Html.ActionLink("Print Report", "GenerateReport", new { Id = Model.Id })
+        <button type="button" id="uploadConsignmentBtn" data-myid="@Model.Id" class="btn btn-info">Upload consignment</button>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Consigned Assets</div>
+    <div class="panel-body">
+        <table class="table" id="assetDetails">
+            <thead>
+                <tr>
+                    <th>Asset Number</th>
+                    <th>Item Id</th>
+                    <th>Item Description</th>
+                    <th>Serial</th>
+                    <th>Item Key Detail</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Assets)
+                {
+                    @Html.Partial("ConsignmentAssetDetailsReadOnly", item)
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+@Scripts.Render("~/bundles/ConsignmentIndex")
+
+
+
+

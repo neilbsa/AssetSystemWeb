@@ -1,0 +1,74 @@
+﻿@model SystemEntities.Models.UserProfile
+
+
+
+@using (Html.BeginForm("Register", "SystemUser", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "RegistrationView" }))
+{
+    @Html.AntiForgeryToken()
+
+    @*@Html.ValidationSummary("", new { @class = "text-danger" })*@
+
+
+    <div class="form-group">
+        @Html.Label("Employee #:", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.CompEmployeeNum, new { maxlength = 15, @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.CompEmployeeNum, null, new { @class = "text-danger Validators", id = "ValidationErrorCompIdNum" })
+            <div role="alert" id="IdNumValidation"></div>
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        @Html.Label("Company", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.CompanyId, ViewBag.Companies as SelectList)
+        </div>
+    </div>*@
+
+    @Html.Hidden("CompanyId", ViewBag.CompanyId as object)
+    <div class="form-group">
+        @Html.Label("Department", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.DepartmentId, ViewBag.Departments as SelectList)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.Label("Branch", new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(m => m.BranchId, ViewBag.Branches as SelectList)
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Firstname, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Firstname, new { maxlength = "15", @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Firstname, null, new { @class = "text-danger Validators" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Middlename, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Middlename, new { maxlength = 15, @class = "form-control" })
+            @Html.ValidationMessageFor(m => m.Middlename, null, new { @class = "text-danger Validators" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Surname, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Surname, new { @class = "form-control", maxlength = 15 })
+            @Html.ValidationMessageFor(m => m.Surname, null, new { @class = "text-danger Validators" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.EmailAddress, new { @class = "col-md-2 control-label" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", maxlength = 25 })
+            @Html.ValidationMessageFor(m => m.EmailAddress, null, new { @class = "text-danger Validators", id = "ValidationErrorEmail" })
+        </div>
+    </div>
+
+}
+
+
+
+<script src="@Url.Content("~/Scripts/CustomScripts/UserRegistration.js")" type="text/javascript"></script>

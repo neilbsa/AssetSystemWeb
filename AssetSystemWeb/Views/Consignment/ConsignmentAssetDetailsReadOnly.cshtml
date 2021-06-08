@@ -1,0 +1,34 @@
+﻿@model SystemEntities.Models.ConsignmentAssetItem
+
+<tr>
+
+    @using (Html.BeginCollectionItem("IncludedAssetsDetails"))
+    {
+
+        <td>
+            @Html.HiddenFor(m => m.Id, new { @class = "form-control" })
+            @Html.HiddenFor(m => m.AssetItemDetails.AssetHeaderDetail.AssetNumber, new { @class = "form-control AssetNumberDetails" })
+            @*@Html.HiddenFor(m => m.AssetNumber, new { @class = "form-control AssetNumberDetails" })*@
+            @Html.DisplayFor(m => m.AssetItemDetails.AssetHeaderDetail.AssetNumber, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.HiddenFor(m => m.AssetItemDetails.ItemId, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.AssetItemDetails.ItemId, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.HiddenFor(m => m.AssetItemDetails.ItemDescription, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.AssetItemDetails.ItemDescription, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.HiddenFor(m => m.AssetItemDetails.SerialNumber, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.AssetItemDetails.SerialNumber, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.HiddenFor(m => m.AssetItemDetails.ItemKeyDetail, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.AssetItemDetails.ItemKeyDetail, new { @class = "form-control" })
+        </td>
+ 
+
+    }
+</tr>
+

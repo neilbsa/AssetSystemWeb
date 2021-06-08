@@ -1,0 +1,28 @@
+﻿.divNoPaddingLeft {
+    padding-left: 0;
+}
+
+#divNoPaddingLeftRight {
+   padding: 0;
+
+}
+
+.divNoPaddingRight {
+    padding-right: 0;
+}
+
+.divMarginLeft {
+    margin-left: 15px;
+}
+
+.divNoPaddingAll {
+   padding: 0;
+   margin: 0;
+   width: 0;
+}
+
+
+ tr, td, th, tbody, thead, tfoot {
+    page-break-inside: avoid;
+}
+

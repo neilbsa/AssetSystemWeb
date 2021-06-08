@@ -1,0 +1,86 @@
+﻿@model SystemEntities.Models.AssetItemDetail
+
+
+<tr>
+    @using (Html.BeginCollectionItem("AssetItemDetails"))
+    {
+
+        @Html.HiddenFor(m => m.Id ,new { @class="AssetItemId" })
+        <td>    
+
+            <div class="col-sm-12 form-group errorBorder has-feedback" style="margin-top:10px;">
+                @Html.TextBoxFor(m => m.ItemId, new { @class = "form-control ItemTypeId inputItemId" })
+                <span class="glyphicon errorIcon form-control-feedback"></span>
+            </div>
+        </td>
+        @*<td>@Html.TextBoxFor(m => m.ItemDescription, new { Id = "ItemDescription", @class = "form-control ItemDetailDescription" })</td>*@
+
+        <td>
+            <div class="col-sm-12 form-group  has-feedback" style="margin-top:10px;">
+                @Html.HiddenFor(m => m.ItemDescription, new { @class = "ItemDescription" })
+                <p class="ItemDescription">
+                   
+                    @Html.DisplayFor(m => m.ItemDescription, new { @class = "form-control" })
+                </p>         
+            </div>
+        </td>
+
+        <td>
+            <div class="col-sm-12 form-group  has-feedback" style="margin-top:10px;">
+                @Html.HiddenFor(m => m.PartNumber, new { @class = "itemPartNumber" })
+                <p class="itemPartNumber">
+
+                    @Html.DisplayFor(m => m.PartNumber, new { @class = "form-control" })
+                </p>
+            </div>
+        </td>
+            <td>
+
+                <div class="col-sm-12 form-group has-feedback errorBorder" style="margin-top:10px;">
+                    @Html.HiddenFor(m => m.SerialNumber, new { @class = "ItemSerialDetail" })
+                    <p class="ItemSerialDetail">
+                        @Html.DisplayFor(m => m.SerialNumber, new { @class = "form-control ItemSerialDetail" })
+                    </p>
+    
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group errorBorder has-feedback" style="margin-top:10px;">
+                    @Html.HiddenFor(m => m.ItemKeyDetail, new { @class = "ItemKeyDetail" })
+                 <p class="ItemKeyDetail">
+                   
+                     @Html.DisplayFor(m => m.ItemKeyDetail, new { @class = "form-control ItemKeyDetail" })
+                 </p>
+               
+               
+                </div>
+            </td>
+            <td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.HiddenFor(m => m.ItemRemarks, new { @class = "ItemRemarks" })
+                    <p class="ItemRemarks">
+                        @Html.DisplayFor(m => m.ItemRemarks, new { @class = "form-control ItemRemarks" })
+                        </p>
+                </div>
+            </td>
+            @*<td>
+                <div class="col-sm-12 form-group has-feedback" style="margin-top:10px;">
+                    @Html.HiddenFor(m => m.AssetHeaderDetail.Price, new { @class = "form-control ItemPrice" })
+                    <p >
+                        @Html.DisplayFor(m => m.AssetHeaderDetail.Price, new { @class = "form-control ItemPrice", })
+                     </p>
+                </div>
+            </td>*@
+            <td>
+                <button type="button" class="btn btn-danger btnDelete">Delete</button>
+            </td>
+    }
+</tr>
+
+@Scripts.Render("~/bundles/UpgradeAssetBuffer")
+
+@*<script src="@Url.Content("~/Scripts/CustomScripts/AssetDetailRows.js")" type="text/javascript"></script>*@
+
+
+
+

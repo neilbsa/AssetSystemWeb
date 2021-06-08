@@ -1,0 +1,56 @@
+﻿
+
+@{
+    ViewBag.Title = "Log in";
+    Layout = null;
+}
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<link href="~/ThemeCode/metisMenu/metisMenu.min.css" rel="stylesheet" />
+<link href="~/ThemeCode/sb-css/sb-admin-2.css" rel="stylesheet" />
+<link href="@Url.Content("~/Content/MyStyleSheet.css")" rel="stylesheet" />
+
+@using (Html.BeginForm())
+{
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Please Select Company</h3>
+                    </div>
+                    <div class="panel-body">
+                        <fieldset>
+                            <div class="form-group">
+
+                                <div class="col-md-12">
+                                    @Html.Label("Company")
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @*@Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })*@
+                                <div class="col-md-12">
+                                    @Html.DropDownList("Company", null,new { @class="CompanySelection" })
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <div class="panel-footer">
+                        <input type="submit" value="GO" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+  
+
+}
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/ThemeJs")
+}

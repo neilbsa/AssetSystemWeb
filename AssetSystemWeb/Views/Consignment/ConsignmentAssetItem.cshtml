@@ -1,0 +1,41 @@
+﻿@model SystemEntities.Models.AssetItemDetail
+
+
+
+<tr>
+
+    @using (Html.BeginCollectionItem("IncludedAssetsDetails"))
+    {
+
+        <td>
+
+            @Html.HiddenFor(m => m.AssetHeaderDetail.AssetNumber, new { @class = "form-control AssetNumberDetails" })
+            @Html.HiddenFor(m => m.Id)
+
+
+            @Html.DisplayFor(m => m.AssetHeaderDetail.AssetNumber, new { @class = "form-control" })
+        </td>
+        <td>
+            @Html.HiddenFor(m => m.ItemId, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.ItemId, new { @class = "form-control" })
+        </td>
+
+        <td>
+            @Html.HiddenFor(m => m.ItemDescription, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.ItemDescription, new { @class = "form-control" })
+        </td>
+
+        <td>
+            @Html.HiddenFor(m => m.SerialNumber, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.SerialNumber, new { @class = "form-control" })
+        </td>
+
+        <td>
+            @Html.HiddenFor(m => m.ItemKeyDetail, new { @class = "form-control" })
+            @Html.DisplayFor(m => m.ItemKeyDetail, new { @class = "form-control" })
+        </td>
+        <td><button type="button" class="btn btn-danger DeleteAsset">Delete</button></td>
+        <td></td>
+
+    }
+</tr>
