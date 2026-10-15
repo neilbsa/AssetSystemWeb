@@ -1,0 +1,46 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+  </Folder>
+  <Folder Name="/src/BuildingBlocks/">
+    <Project Path="src/BuildingBlocks/AssetSystem.BuildingBlocks.Infrastructure/AssetSystem.BuildingBlocks.Infrastructure.csproj" />
+    <Project Path="src/BuildingBlocks/AssetSystem.BuildingBlocks.Web/AssetSystem.BuildingBlocks.Web.csproj" />
+    <Project Path="src/BuildingBlocks/AssetSystem.SharedKernel/AssetSystem.SharedKernel.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Identity/">
+    <Project Path="src/Modules/Identity/AssetSystem.Identity.Api/AssetSystem.Identity.Api.csproj" />
+    <Project Path="src/Modules/Identity/AssetSystem.Identity.Application/AssetSystem.Identity.Application.csproj" />
+    <Project Path="src/Modules/Identity/AssetSystem.Identity.Domain/AssetSystem.Identity.Domain.csproj" />
+    <Project Path="src/Modules/Identity/AssetSystem.Identity.Infrastructure/AssetSystem.Identity.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Organization/">
+    <Project Path="src/Modules/Organization/AssetSystem.Organization.Api/AssetSystem.Organization.Api.csproj" />
+    <Project Path="src/Modules/Organization/AssetSystem.Organization.Application/AssetSystem.Organization.Application.csproj" />
+    <Project Path="src/Modules/Organization/AssetSystem.Organization.Contracts/AssetSystem.Organization.Contracts.csproj" />
+    <Project Path="src/Modules/Organization/AssetSystem.Organization.Domain/AssetSystem.Organization.Domain.csproj" />
+    <Project Path="src/Modules/Organization/AssetSystem.Organization.Infrastructure/AssetSystem.Organization.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Assets/">
+    <Project Path="src/Modules/Assets/AssetSystem.Assets.Api/AssetSystem.Assets.Api.csproj" />
+    <Project Path="src/Modules/Assets/AssetSystem.Assets.Application/AssetSystem.Assets.Application.csproj" />
+    <Project Path="src/Modules/Assets/AssetSystem.Assets.Contracts/AssetSystem.Assets.Contracts.csproj" />
+    <Project Path="src/Modules/Assets/AssetSystem.Assets.Domain/AssetSystem.Assets.Domain.csproj" />
+    <Project Path="src/Modules/Assets/AssetSystem.Assets.Infrastructure/AssetSystem.Assets.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/Modules/Consignments/">
+    <Project Path="src/Modules/Consignments/AssetSystem.Consignments.Api/AssetSystem.Consignments.Api.csproj" />
+    <Project Path="src/Modules/Consignments/AssetSystem.Consignments.Application/AssetSystem.Consignments.Application.csproj" />
+    <Project Path="src/Modules/Consignments/AssetSystem.Consignments.Contracts/AssetSystem.Consignments.Contracts.csproj" />
+    <Project Path="src/Modules/Consignments/AssetSystem.Consignments.Domain/AssetSystem.Consignments.Domain.csproj" />
+    <Project Path="src/Modules/Consignments/AssetSystem.Consignments.Infrastructure/AssetSystem.Consignments.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/AssetSystem.Host/AssetSystem.Host.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/AssetSystem.ArchitectureTests/AssetSystem.ArchitectureTests.csproj" />
+    <Project Path="tests/AssetSystem.UnitTests/AssetSystem.UnitTests.csproj" />
+  </Folder>
+</Solution>
