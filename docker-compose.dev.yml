@@ -1,0 +1,18 @@
+# Just the database for local development, with the port published:
+#   docker compose -f docker-compose.dev.yml up -d
+# then run the API (dotnet run --project src/AssetSystem.Host) and the web app (cd web && npm run dev).
+# Matches the connection string in appsettings.Development.json.
+services:
+  db:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: assetsystem
+      POSTGRES_USER: assetsystem
+      POSTGRES_PASSWORD: assetsystem
+    ports:
+      - "5432:5432"
+    volumes:
+      - dev-db-data:/var/lib/postgresql/data
+
+volumes:
+  dev-db-data:

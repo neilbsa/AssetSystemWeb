@@ -1,0 +1,50 @@
+# Production-style stack:  docker compose up -d --build   (then open http://localhost:8080)
+# Copy .env.example to .env first and set the secrets.
+services:
+  db:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: assetsystem
+      POSTGRES_USER: assetsystem
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U assetsystem -d assetsystem"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: docker/api.Dockerfile
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ConnectionStrings__Postgres: Host=db;Database=assetsystem;Username=assetsystem;Password=${POSTGRES_PASSWORD}
+      Jwt__SigningKey: ${JWT_SIGNING_KEY:?Set JWT_SIGNING_KEY (32+ characters) in .env}
+      Seeding__AdminUserName: ${ADMIN_USERNAME:-administrator}
+      Seeding__AdminEmail: ${ADMIN_EMAIL:-administrator@example.com}
+      Seeding__AdminPassword: ${ADMIN_PASSWORD:?Set ADMIN_PASSWORD in .env (used on first start only)}
+      Seeding__SampleData: ${SEED_SAMPLE_DATA:-false}
+    volumes:
+      - file-data:/app/data
+
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "${WEB_PORT:-8080}:80"
+
+volumes:
+  db-data:
+  file-data:

@@ -29,7 +29,9 @@ public static class LoginHandler
             return Error.Forbidden("auth.invalid_credentials", "Invalid user name or password.");
 
         var companies = await bus.AccessibleCompaniesAsync(account, ct);
-        if (companies.Count == 0)
+
+        // A fresh install has no companies yet: administrators may still sign in to create the first one.
+        if (companies.Count == 0 && !account.Access.IsAdministrator)
             return Error.Forbidden("auth.no_company", "No company is assigned to this account.");
 
         // A single-company user skips the company picker.
