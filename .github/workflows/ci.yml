@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [master, main, 'claude/**']
+  pull_request:
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_USER: assetsystem
+          POSTGRES_PASSWORD: assetsystem
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U assetsystem" --health-interval 5s --health-timeout 3s --health-retries 10
+    env:
+      TEST_POSTGRES: Host=localhost;Username=assetsystem;Password=assetsystem;Database=postgres
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+      - run: dotnet build AssetSystem.slnx -c Release
+      - run: dotnet test --solution AssetSystem.slnx -c Release --no-build
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+
+  docker:
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f docker/api.Dockerfile -t assetsystem-api .
+      - run: docker build -f docker/web.Dockerfile -t assetsystem-web .

@@ -1,0 +1,14 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="WolverineFx" />
+    <PackageReference Include="FluentValidation" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../AssetSystem.Organization.Domain/AssetSystem.Organization.Domain.csproj" />
+    <ProjectReference Include="../AssetSystem.Organization.Contracts/AssetSystem.Organization.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../AssetSystem.Assets.Application/AssetSystem.Assets.Application.csproj" />
+    <ProjectReference Include="../../../BuildingBlocks/AssetSystem.BuildingBlocks.Infrastructure/AssetSystem.BuildingBlocks.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>

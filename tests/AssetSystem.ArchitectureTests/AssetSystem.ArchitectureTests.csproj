@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="NetArchTest.Rules" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Using Include="Xunit" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/Modules/Identity/AssetSystem.Identity.Api/AssetSystem.Identity.Api.csproj" />
+    <ProjectReference Include="../../src/Modules/Identity/AssetSystem.Identity.Infrastructure/AssetSystem.Identity.Infrastructure.csproj" />
+    <ProjectReference Include="../../src/Modules/Organization/AssetSystem.Organization.Api/AssetSystem.Organization.Api.csproj" />
+    <ProjectReference Include="../../src/Modules/Organization/AssetSystem.Organization.Infrastructure/AssetSystem.Organization.Infrastructure.csproj" />
+    <ProjectReference Include="../../src/Modules/Organization/AssetSystem.Organization.Contracts/AssetSystem.Organization.Contracts.csproj" />
+    <ProjectReference Include="../../src/Modules/Assets/AssetSystem.Assets.Api/AssetSystem.Assets.Api.csproj" />
+    <ProjectReference Include="../../src/Modules/Assets/AssetSystem.Assets.Infrastructure/AssetSystem.Assets.Infrastructure.csproj" />
+    <ProjectReference Include="../../src/Modules/Assets/AssetSystem.Assets.Contracts/AssetSystem.Assets.Contracts.csproj" />
+    <ProjectReference Include="../../src/Modules/Consignments/AssetSystem.Consignments.Api/AssetSystem.Consignments.Api.csproj" />
+    <ProjectReference Include="../../src/Modules/Consignments/AssetSystem.Consignments.Infrastructure/AssetSystem.Consignments.Infrastructure.csproj" />
+    <ProjectReference Include="../../src/Modules/Consignments/AssetSystem.Consignments.Contracts/AssetSystem.Consignments.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
